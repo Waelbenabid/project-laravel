@@ -15,7 +15,7 @@ class CreateEtudiantsTable extends Migration
     {
         Schema::create('etudiants', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->foreignId('user_id')->constrained('users');
             $table->enum('gender', ['male', 'female', 'other']);
             $table->string('phone');
             $table->date('date_de_naissance');
@@ -24,6 +24,7 @@ class CreateEtudiantsTable extends Migration
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
