@@ -1,66 +1,55 @@
-@extends('components.registre')
+@extends('layouts.app')
 
-@section('registre')
-    <div class="grid min-h-screen place-items-center">
-        <div class="w-11/12 p-12 bg-white sm:w-8/12 md:w-1/2 lg:w-5/12">
-            <h1 class="text-xl font-semibold">Hello there 👋, <span class="font-normal">please fill in your information to
-                    continue</span></h1>
-            <form class="mt-6" action="/CreateNewUser" method="POST">
+@section('content')
+    <div class="flex justify-center">
+        <div class="w-1/3 bg-white p-6 rounded-lg">
+            <h2 class="text-2xl mb-4">Inscription Étudiant</h2>
+            <form action="{{ route('createEtudiant') }}" method="POST">
                 @csrf
-                @method('POST')
 
-
-
-                <div class="flex justify-between gap-3">
-                    <span class="w-1/2">
-                        <label for="name" class="block text-xs font-semibold text-gray-600 uppercase">name</label>
-                        <input type="text" name="name" placeholder="First Name" autocomplete="given-name"
-                            class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
-                            required />
-                    </span>
+                <div class="mb-4">
+                    <label for="gender" class="block font-medium text-gray-700">Genre</label>
+                    <select name="gender" id="gender" class="form-select mt-1 block w-full" required>
+                        <option value="male">Homme</option>
+                        <option value="female">Femme</option>
+                        <option value="other">Autre</option>
+                    </select>
                 </div>
-                <label for="email" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">E-mail</label>
-                <input  type="email" name="email" placeholder="exemple@xyz.com" autocomplete="email"
-                    class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
-                    required />
-                <label for="password" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Password</label>
-                <input type="password" name="password" placeholder="********" autocomplete="new-password"
-                    class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
-                    required />
-                <label for="password-confirm" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Confirm
-                    password</label>
-                <input type="password" name="password-confirm" placeholder="********"
-                    autocomplete="new-password"
-                    class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
-                    required />
-                <button type="submit"
-                    class="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
-                    Sign up
-                </button>
-                <a href="{{'login'}}" class="justify-between inline-block mt-4 text-xs text-gray-500 cursor-pointer hover:text-black">
-                    Already registered?</a>
 
+                <div class="mb-4">
+                    <label for="phone" class="block font-medium text-gray-700">Téléphone</label>
+                    <input type="text" name="phone" id="phone" class="form-input mt-1 block w-full" required />
+                </div>
 
+                <div class="mb-4">
+                    <label for="date_de_naissance" class="block font-medium text-gray-700">Date de naissance</label>
+                    <input type="date" name="date_de_naissance" id="date_de_naissance"
+                        class="form-input mt-1 block w-full" required />
+                </div>
 
+                <div class="mb-4">
+                    <label for="Adresse_mail" class="block font-medium text-gray-700">Adresse e-mail</label>
+                    <input type="email" name="Adresse_mail" id="Adresse_mail" class="form-input mt-1 block w-full"
+                        required />
+                </div>
 
+                <div class="mb-4">
+                    <label for="Adresse_maison" class="block font-medium text-gray-700">Adresse maison</label>
+                    <input type="text" name="Adresse_maison" id="Adresse_maison" class="form-input mt-1 block w-full"
+                        required />
+                </div>
 
-
-
-                    
+                <div>
+                    <button type="submit"
+                        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">S'inscrire</button>
+                </div>
             </form>
-
-
-
-
         </div>
     </div>
-
-
-
-
 @endsection
 
-{{-- 
+
+{{--
 @section('content_')
 <main class="login-form">
     <div class="cotainer">
